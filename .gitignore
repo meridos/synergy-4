@@ -1,0 +1,15 @@
+**/node_modules/
+**/protected/
+**/dist/
+**/vendor/
+
+# IDE
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

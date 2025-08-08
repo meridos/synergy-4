@@ -1,0 +1,11 @@
+{
+	"editor.formatOnSave": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"prettier.requireConfig": false,
+	"prettier.configPath": "./app-1/front/.prettierrc",
+	"editor.codeActionsOnSave": {
+		"source.fixAll.eslint": "explicit"
+	},
+	"eslint.workingDirectories": ["./app-1/front"],
+	"eslint.validate": ["javascript", "javascriptreact", "typescript", "typescriptreact"]
+}

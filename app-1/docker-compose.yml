@@ -1,0 +1,29 @@
+services:
+  blog-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: blog-app
+    ports:
+      - '8095:80'
+    volumes:
+      - blog_logs:/var/log/apache2
+      - blog_db:/var/www/html/db
+    networks:
+      - traefik_default
+    restart: always
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.synergy-blog.middlewares=redirect-to-https@docker'
+      - 'traefik.http.routers.synergy-blog.rule=Host(`s-blog.bobrovartem.ru`)'
+      - 'traefik.http.routers.synergy-blog.tls=true'
+      - 'traefik.http.routers.synergy-blog.tls.certresolver=lets'
+      - 'traefik.http.routers.synergy-blog.entrypoints=websecure'
+
+volumes:
+  blog_logs:
+  blog_db:
+
+networks:
+  traefik_default:
+    external: true
