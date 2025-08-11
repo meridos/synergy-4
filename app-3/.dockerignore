@@ -1,0 +1,61 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# Node modules
+front/node_modules
+node_modules
+
+# Vendor (will be installed in container)
+back/vendor
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+logs
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Development files
+front/src/**/*.test.js
+front/src/**/*.test.jsx
+*.test.php
+
+# Cache
+.cache
+dist
+build
+
+# Backup files
+*.backup
+*.bak

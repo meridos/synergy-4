@@ -1,0 +1,7 @@
+# Environment
+.env.production
+
+# Database
+db/*.sqlite
+
+vendor/

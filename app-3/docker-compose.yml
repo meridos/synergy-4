@@ -1,0 +1,29 @@
+services:
+  travel-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: travel-app
+    ports:
+      - "8097:80"
+    volumes:
+      - travel_logs:/var/log/apache2
+      - travel_db:/var/www/html/db
+    networks:
+      - traefik_default
+    restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.synergy-travel.middlewares=redirect-to-https@docker"
+      - "traefik.http.routers.synergy-travel.rule=Host(`s-travel.bobrovartem.ru`)"
+      - "traefik.http.routers.synergy-travel.tls=true"
+      - "traefik.http.routers.synergy-travel.tls.certresolver=lets"
+      - "traefik.http.routers.synergy-travel.entrypoints=websecure"
+
+volumes:
+  travel_logs:
+  travel_db:
+
+networks:
+  traefik_default:
+    external: true
