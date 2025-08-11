@@ -1,0 +1,29 @@
+services:
+  library-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: library-app
+    ports:
+      - '8096:80'
+    volumes:
+      - library_logs:/var/log/apache2
+      - library_db:/var/www/html/db
+    networks:
+      - traefik_default
+    restart: always
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.synergy-library.middlewares=redirect-to-https@docker'
+      - 'traefik.http.routers.synergy-library.rule=Host(`s-library.bobrovartem.ru`)'
+      - 'traefik.http.routers.synergy-library.tls=true'
+      - 'traefik.http.routers.synergy-library.tls.certresolver=lets'
+      - 'traefik.http.routers.synergy-library.entrypoints=websecure'
+
+volumes:
+  library_logs:
+  library_db:
+
+networks:
+  traefik_default:
+    external: true
